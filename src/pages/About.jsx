@@ -5,7 +5,7 @@ export default function About() {
     <div>
       <Navbar/>
       <div className="p-10 text-center">
-        <h1 className="text-2xl font-bold">Om oss-side</h1>
+        <h1 className="text-2xl font-bold">Om oss-sideppppp</h1>
       </div>
     </div>
   )
