@@ -29,8 +29,8 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-[#ede8e8f2] flex flex-col gap-1 pb-3 pt-2 text-xl font-extrabold">
           <a href="#" className="p-2 hover:text-yellow-600 duration-100">Hjem</a>
-          <a href="#" className="p-2 hover:text-yellow-600 duration-100">Service</a>
-          <a href="#" className="p-2 hover:text-yellow-600 duration-100">Osv...</a>
+          <a href="#" className="p-2 hover:text-yellow-600 duration-100">Info</a>
+          <a href="#" className="p-2 hover:text-yellow-600 duration-100">Produkter</a>
           <a href="#" className="p-3 flex justify-center bg-yellow-500 w-60 mx-auto rounded-4xl hover:bg-yellow-600 duration-100">Søknadskjema</a>
         </div>
       )}
