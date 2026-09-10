@@ -1,12 +1,15 @@
 import Navbar from '../components/Navbar'
+import Hero from '../components/Hero'
 
 export default function About() {
+
   return (
-    <div>
-      <Navbar/>
-      <div className="p-10 text-center">
-        <h1 className="text-2xl font-bold">Om oss-sideppppp</h1>
+    <>
+      <div className="bg-gray-50"/>
+      <div className="">
+        <Navbar/>
+        <Hero />
       </div>
-    </div>
+    </>
   )
 }
