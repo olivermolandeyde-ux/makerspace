@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function Hero() {
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 800], [0, -350])
+  const y = useTransform(scrollY, [0, 500], [0, -350])
 
   return (
     <section className="relative h-screen bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${HeroImage})` }}>
