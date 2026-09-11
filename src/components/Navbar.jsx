@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import MakerSpaceLogoen from '../assets/makerspace.jpg';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
