@@ -6,10 +6,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative z-10 text-center text-white px-4"> 
-        <h1 className="text-5xl md:text-6x1 font-bold mb-4">
+        <h1 className="text-5xl md:text-7xl font-bold mb-4">
           Makerspace
         </h1>
-        <p className="text-2xl md:text-3xl">
+        <p className="text-2xl md:text-4xl">
           Her skapes det greier
         </p>
       </div>
