@@ -11,10 +11,10 @@ export default function Navbar() {
 
       {/* pc menu */}
       <div className="hidden md:flex ml-auto font-extrabold gap-2">
-        <link href="/" className="p-2 hover:text-yellow-600 duration-100">hjem</link>
-        <link href="/about" className="p-2 hover:text-yellow-600 duration-100">Info</link>
-        <link href="/products" className="p-2 hover:text-yellow-600 duration-100">Produkter</link>
-        <link href="#" className="p-2 flex justify-center bg-yellow-500 w-40 rounded-4xl hover:bg-yellow-600 duration-100">Søknadskjema</link>
+        <Link href="/" className="p-2 hover:text-yellow-600 duration-100">hjem</Link>
+        <Link href="/about" className="p-2 hover:text-yellow-600 duration-100">Info</Link>
+        <Link href="/products" className="p-2 hover:text-yellow-600 duration-100">Produkter</Link>
+        <Link href="#" className="p-2 flex justify-center bg-yellow-500 w-40 rounded-4xl hover:bg-yellow-600 duration-100">Søknadskjema</Link>
       </div>
 
       {/* mobile menu button */}
@@ -28,10 +28,10 @@ export default function Navbar() {
       {/* mobilmeny */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-[#ede8e8f2] flex flex-col gap-1 pb-3 pt-2 text-xl font-extrabold">
-          <link href="/" className="p-2 hover:text-yellow-600 duration-100">Hjem</link>
-          <link href="/about" className="p-2 hover:text-yellow-600 duration-100">Info</link>
-          <link href="/products" className="p-2 hover:text-yellow-600 duration-100">Produkter</link>
-          <link href="#" className="p-3 flex justify-center bg-yellow-500 w-60 mx-auto rounded-4xl hover:bg-yellow-600 duration-100">Søknadskjema</link>
+          <Link href="/" className="p-2 hover:text-yellow-600 duration-100">Hjem</Link>
+          <Link href="/about" className="p-2 hover:text-yellow-600 duration-100">Info</Link>
+          <Link href="/products" className="p-2 hover:text-yellow-600 duration-100">Produkter</Link>
+          <Link href="#" className="p-3 flex justify-center bg-yellow-500 w-60 mx-auto rounded-4xl hover:bg-yellow-600 duration-100">Søknadskjema</Link>
         </div>
       )}
     </nav>
