@@ -6,7 +6,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="bg-[#ede8e8f2] p-1 shadow-sm flex items-center gap-4 relative">
+    <nav className="z-50 bg-[#ede8e8f2] p-1 shadow-sm flex items-center gap-4 relative">
       <img className="h-16 w-12" src={MakerSpaceLogoen} alt="Makerspace logo" />
       <a href="/" className="font-serif font-bold text-3xl text-gray-800">Makerspace</a>
 
