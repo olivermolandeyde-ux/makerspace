@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import Openingstider from '../components/Openingstider'
 
 export default function Home() {
 
@@ -9,6 +10,7 @@ export default function Home() {
       <div className="">
         <Navbar/>
         <Hero />
+        <Openingstider />
       </div>
     </>
   )
