@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
+import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -10,7 +11,24 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 }
 
-const app = initializeApp(firebaseConfig)
+export const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey && firebaseConfig.projectId && firebaseConfig.appId,
+)
 
-// Dette er det Login.jsx / SignUp.jsx importerer
-export const auth = getAuth(app)
+let app = null
+let auth = null
+let db = null
+
+// Uten .env klarer vi oss fortsatt med å vise sidene, men databasen og
+// innloggingen er utilgjengelig. Da viser grensesnittet en tydelig feilmelding.
+if (isFirebaseConfigured) {
+  try {
+    app = initializeApp(firebaseConfig)
+    auth = getAuth(app)
+    db = getFirestore(app)
+  } catch (error) {
+    console.error("Kunne ikke initialisere Firebase:", error)
+  }
+}
+
+export { app, auth, db }

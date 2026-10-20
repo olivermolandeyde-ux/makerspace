@@ -1,0 +1,75 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isNonEmptyString(value) {
+      return value is string && value.size() > 0 && value.size() <= 200;
+    }
+
+    // Offentlig registrering krever eksplisitt godkjenning og gyldige tall.
+    // Navn, enhet og pris lagres som kopi på registreringen.
+    function isValidRegistration() {
+      let data = request.resource.data;
+      return data.approved == true
+        && data.amount is number
+        && data.amount > 0
+        && data.amount <= 1000000
+        && data.cost is number
+        && data.cost >= 0
+        && data.pricePerUnit is number
+        && data.pricePerUnit >= 0
+        && isNonEmptyString(data.teacherName)
+        && isNonEmptyString(data.departmentId)
+        && isNonEmptyString(data.departmentName)
+        && isNonEmptyString(data.machineId)
+        && isNonEmptyString(data.machineName)
+        && isNonEmptyString(data.materialId)
+        && isNonEmptyString(data.materialName)
+        && isNonEmptyString(data.unit)
+        && data.keys().hasAll([
+          'date',
+          'teacherName',
+          'departmentId',
+          'departmentName',
+          'machineId',
+          'machineName',
+          'materialId',
+          'materialName',
+          'unit',
+          'amount',
+          'pricePerUnit',
+          'cost',
+          'approved'
+        ]);
+    }
+
+    // Alle kan lese grunndataene som trengs i registreringsskjemaet.
+    // Bare innloggede administratorer kan opprette, endre eller slette.
+    match /departments/{departmentId} {
+      allow read: if true;
+      allow write: if signedIn();
+    }
+
+    match /machines/{machineId} {
+      allow read: if true;
+      allow write: if signedIn();
+    }
+
+    match /materials/{materialId} {
+      allow read: if true;
+      allow write: if signedIn();
+    }
+
+    // Lærere kan opprette registreringer uten innlogging, men bare med
+    // approved == true og gyldige felt. Historikk og rapporter er beskyttet.
+    match /registrations/{registrationId} {
+      allow create: if isValidRegistration();
+      allow read, update, delete: if signedIn();
+    }
+  }
+}
