@@ -280,6 +280,31 @@ og `--font-sans` i `src/index.css`.
    Lesing av `registrations` skal bli avvist, mens oppretting med
    `approved: true` og gyldige felt skal fungere.
 
+## 8. Deploy til Vercel
+
+`.env` ligger ikke i Git og blir derfor ikke med når Vercel bygger fra GitHub.
+Vite leser `VITE_*`-variablene på byggetidspunktet, så de må legges inn som
+miljøvariabler i Vercel:
+
+1. Åpne prosjektet i Vercel og gå til **Settings → Environment Variables**.
+2. Legg inn disse for **Production** (og gjerne **Preview**):
+
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+
+3. Lagre og **redeploy** prosjektet. Variablene må være med under bygget.
+4. `vercel.json` sørger for at `/registrer`, `/admin` og andre ruter fungerer
+   når de åpnes direkte eller lastes på nytt.
+5. Legg Vercel-domenet til i **Firebase Console → Authentication → Settings →
+   Authorized domains**.
+
+Uten miljøvariablene viser den deployede siden «Firebase er ikke konfigurert»,
+selv om den virker på `localhost`.
+
 ## Viktig om sikkerhet
 
 Offentlig oppretting er bevisst tillatt for at lærere skal slippe innlogging.
